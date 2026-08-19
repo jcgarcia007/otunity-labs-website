@@ -8,18 +8,48 @@
 <meta property="og:title" content="Venuo — Your neighborhood, in one app">
 <meta property="og:description" content="Discover venues near you. Chat, order, pay, and come back. For businesses, a live social storefront.">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Venuo">
+<meta property="og:url" content="https://www.venuo.cloud/">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:image" content="https://www.venuo.cloud/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Venuo — discover the venues around you, join their live room, order and pay.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Venuo — Your neighborhood, in one app">
+<meta name="twitter:description" content="Discover venues near you. Chat, order, pay, and come back. For businesses, a live social storefront.">
+<meta name="twitter:image" content="https://www.venuo.cloud/og.png">
+<link rel="canonical" href="https://www.venuo.cloud/">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0D1017" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script>document.documentElement.className="js"</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --brand:#5C7CFA;--brand-dark:#4A6AE8;--brand-light:rgba(92,124,250,.12);--purple:#7C3AED;
+  --brand:#3F5ED6;--brand-dark:#354FBB;--brand-light:rgba(63,94,214,.12);--purple:#6D28D9;
   --success:#1D9E75;--gold:#D97706;--danger:#ef4444;
-  --ink:#0F172A;--muted:#64748B;--faint:#94A3B8;--line:#E7E9F2;--bg:#fff;--soft:#F6F7FB;--soft2:#EEF1FC;
+  --ink:#0F172A;--muted:#64748B;--faint:#5F6B7C;--deco:#7F8DA3;--line:#E7E9F2;--bg:#fff;--card:#fff;--soft:#F6F7FB;--soft2:#EEF1FC;
+  --nav-bg:rgba(255,255,255,.82);--phone-shell:#0F1222;--phone-edge:#23263a;
+  --on-brand:#fff;--brand-ink:#4A6AE8;
   --grad:linear-gradient(120deg,#5C7CFA,#7C3AED);
   --shadow:0 10px 30px -12px rgba(21,32,80,.20);--shadow-lg:0 30px 60px -20px rgba(21,32,80,.28);
   --f-d:"Plus Jakarta Sans",system-ui,sans-serif;--f-b:"Inter",system-ui,sans-serif;--max:1160px;--gut:24px;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --brand:#8AA0FF;--brand-dark:#A5B4FF;--brand-light:rgba(138,160,255,.16);--purple:#A78BFA;
+    --success:#3FCF9B;--gold:#F0A93B;
+    --ink:#E9EDF6;--muted:#9FADC4;--faint:#B3C0D4;--deco:#5B6879;
+    --line:#242C3A;--bg:#0D1017;--card:#151A24;--soft:#11151E;--soft2:#1A2233;
+    --on-brand:#0B1020;--brand-ink:#4A6AE8;
+    --nav-bg:rgba(13,16,23,.82);
+    --shadow:0 10px 30px -12px rgba(0,0,0,.6);--shadow-lg:0 30px 60px -20px rgba(0,0,0,.72);
+  }
 }
 *,::after,::before{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -33,16 +63,16 @@ a{color:inherit;text-decoration:none}
 .eyebrow{font-family:var(--f-d);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);margin:0 0 14px}
 .btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--f-d);font-weight:700;font-size:15.5px;border-radius:999px;padding:13px 22px;border:1.5px solid transparent;cursor:pointer;transition:transform .15s,box-shadow .2s,background .2s,border-color .2s;white-space:nowrap}
 .btn:hover{transform:translateY(-1px)}
-.btn--brand{background:var(--brand);color:#fff;box-shadow:0 8px 20px -8px rgba(92,124,250,.7)}
+.btn--brand{background:var(--brand);color:var(--on-brand);box-shadow:0 8px 20px -8px rgba(92,124,250,.7)}
 .btn--brand:hover{background:var(--brand-dark)}
-.btn--ghost{background:#fff;color:var(--ink);border-color:var(--line)}
+.btn--ghost{background:var(--card);color:var(--ink);border-color:var(--line)}
 .btn--ghost:hover{border-color:var(--brand);color:var(--brand)}
-.btn--white{background:#fff;color:var(--brand)}
+.btn--white{background:#fff;color:var(--brand-ink)}
 .btn--lg{padding:16px 28px;font-size:16.5px}
 .btn svg{width:18px;height:18px}
 
 /* nav */
-.nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{position:sticky;top:0;z-index:60;background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav__in{display:flex;align-items:center;justify-content:space-between;height:66px}
 .brand{display:flex;align-items:center;gap:10px;font-family:var(--f-d);font-weight:800;font-size:20px;letter-spacing:-.03em}
 .brand__pin{width:26px;height:26px;border-radius:9px;background:var(--grad);display:grid;place-items:center;flex:0 0 auto;box-shadow:0 6px 14px -6px rgba(124,58,237,.8)}
@@ -50,7 +80,9 @@ a{color:inherit;text-decoration:none}
 .nav__links{display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0}
 .nav__links a{font-family:var(--f-d);font-weight:600;font-size:14.5px;color:var(--muted);padding:10px 14px;border-radius:10px}
 .nav__links a:hover{color:var(--ink);background:var(--soft)}
-.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;margin:0 4px;background:#fff}
+.nav__links a.btn--brand{color:var(--on-brand)}
+.nav__links a.btn--brand:hover{color:var(--on-brand);background:var(--brand-dark)}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;margin:0 4px;background:var(--card)}
 .lang button{border:0;background:0;font-family:var(--f-d);font-weight:700;font-size:12.5px;color:var(--faint);padding:6px 11px;border-radius:999px;cursor:pointer;min-height:40px}
 .lang button.on{background:var(--brand-light);color:var(--brand)}
 
@@ -69,8 +101,8 @@ a{color:inherit;text-decoration:none}
 .stat span{color:var(--faint);font-size:13.5px;font-weight:500}
 
 /* phone mock */
-.phone{position:relative;justify-self:center;width:290px;height:590px;border-radius:44px;background:#0F1222;padding:12px;box-shadow:var(--shadow-lg);border:1px solid #23263a}
-.phone::before{content:"";position:absolute;top:16px;left:50%;transform:translateX(-50%);width:112px;height:26px;background:#0F1222;border-radius:0 0 16px 16px;z-index:3}
+.phone{position:relative;justify-self:center;width:290px;height:590px;border-radius:44px;background:var(--phone-shell);padding:12px;box-shadow:var(--shadow-lg);border:1px solid var(--phone-edge)}
+.phone::before{content:"";position:absolute;top:16px;left:50%;transform:translateX(-50%);width:112px;height:26px;background:var(--phone-shell);border-radius:0 0 16px 16px;z-index:3}
 .scr{position:relative;width:100%;height:100%;border-radius:34px;overflow:hidden;background:var(--soft);display:flex;flex-direction:column}
 .scr__top{background:var(--grad);color:#fff;padding:40px 16px 16px;display:flex;align-items:center;gap:10px}
 .scr__ava{width:38px;height:38px;border-radius:12px;background:rgba(255,255,255,.22);display:grid;place-items:center;font-family:var(--f-d);font-weight:800;font-size:15px;flex:0 0 auto}
@@ -78,26 +110,26 @@ a{color:inherit;text-decoration:none}
 .scr__biz span{font-size:11.5px;opacity:.85;display:flex;align-items:center;gap:5px}
 .scr__biz span::before{content:"";width:6px;height:6px;border-radius:50%;background:#8FE9C6;display:inline-block}
 .scr__body{flex:1;padding:14px 14px 10px;overflow:hidden;display:flex;flex-direction:column;gap:10px}
-.offer{background:#fff;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:14px;padding:11px 13px;box-shadow:var(--shadow)}
+.offer{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:14px;padding:11px 13px;box-shadow:var(--shadow)}
 .offer .lab{font-family:var(--f-d);font-weight:700;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:6px}
 .offer b{font-family:var(--f-d);font-weight:700;font-size:14.5px;display:block;margin:4px 0 2px}
 .offer p{margin:0;font-size:12px;color:var(--muted)}
 .msg{max-width:80%;padding:9px 12px;border-radius:14px;font-size:12.5px;line-height:1.4}
-.msg--in{background:#fff;border:1px solid var(--line);border-bottom-left-radius:5px;align-self:flex-start}
-.msg--out{background:var(--brand);color:#fff;border-bottom-right-radius:5px;align-self:flex-end}
+.msg--in{background:var(--card);border:1px solid var(--line);border-bottom-left-radius:5px;align-self:flex-start}
+.msg--out{background:var(--brand);color:var(--on-brand);border-bottom-right-radius:5px;align-self:flex-end}
 .msg small{display:block;font-size:9.5px;opacity:.6;margin:3px 0 0}
-.cart{margin-top:auto;background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;box-shadow:var(--shadow)}
+.cart{margin-top:auto;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;box-shadow:var(--shadow)}
 .cart>div b{display:block;font-family:var(--f-d);font-weight:700;font-size:13px}
 .cart>div span{display:block;font-size:11px;color:var(--muted);margin-top:1px}
-.cart .pay{background:var(--success);color:#fff;font-family:var(--f-d);font-weight:700;font-size:12px;padding:8px 14px;border-radius:999px}
-.tabs{display:flex;justify-content:space-around;padding:10px 6px 14px;background:#fff;border-top:1px solid var(--line)}
-.tabs i{width:24px;height:24px;color:var(--faint);display:block}
+.cart .pay{background:var(--success);color:var(--on-brand);font-family:var(--f-d);font-weight:700;font-size:12px;padding:8px 14px;border-radius:999px}
+.tabs{display:flex;justify-content:space-around;padding:10px 6px 14px;background:var(--card);border-top:1px solid var(--line)}
+.tabs i{width:24px;height:24px;color:var(--deco);display:block}
 .tabs i.on{color:var(--brand)}
 .tabs i svg{width:100%;height:100%}
-.float{position:absolute;background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 13px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:10px;font-size:12.5px;font-family:var(--f-d);font-weight:600}
+.float{position:absolute;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 13px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:10px;font-size:12.5px;font-family:var(--f-d);font-weight:600}
 .float svg{width:20px;height:20px;flex:0 0 auto}
-.float--tl{top:64px;left:-26px}
-.float--br{bottom:110px;right:-18px}
+.float--tl{top:56px;left:-150px}
+.float--br{bottom:118px;right:-74px}
 .float .dot{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;flex:0 0 auto}
 .float small{display:block;font-weight:500;color:var(--faint);font-size:10.5px}
 
@@ -105,7 +137,7 @@ a{color:inherit;text-decoration:none}
 .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--soft);padding:20px 0}
 .strip__in{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;color:var(--faint);font-family:var(--f-d);font-weight:600;font-size:14px}
 .strip__in b{color:var(--muted)}
-.chip{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 15px;font-size:13.5px;color:var(--muted)}
+.chip{display:inline-flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 15px;font-size:13.5px;color:var(--muted)}
 .chip svg{width:16px;height:16px;color:var(--brand)}
 
 /* sections */
@@ -117,17 +149,17 @@ a{color:inherit;text-decoration:none}
 
 /* steps */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.step{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px 24px;box-shadow:var(--shadow)}
+.step{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px 24px;box-shadow:var(--shadow)}
 .step__n{width:44px;height:44px;border-radius:13px;background:var(--brand-light);color:var(--brand);display:grid;place-items:center;font-family:var(--f-d);font-weight:800;font-size:18px;margin:0 0 18px}
 .step h3{font-size:20px;font-weight:700}
 .step p{color:var(--muted);font-size:15.5px;margin:9px 0 0}
 
 /* feature grid */
 .feat{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 24px;transition:transform .18s,box-shadow .2s,border-color .2s}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px 24px;transition:transform .18s,box-shadow .2s,border-color .2s}
 .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:transparent}
 .card__ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;margin:0 0 18px}
-.card__ic svg{width:24px;height:24px;color:#fff}
+.card__ic svg{width:24px;height:24px;color:var(--on-brand)}
 .card h3{font-size:18.5px;font-weight:700}
 .card p{color:var(--muted);font-size:15px;margin:8px 0 0}
 .i-brand{background:var(--brand)}.i-purple{background:var(--purple)}.i-green{background:var(--success)}.i-gold{background:var(--gold)}.i-pink{background:#EC4899}.i-cyan{background:#0EA5E9}
@@ -141,9 +173,9 @@ a{color:inherit;text-decoration:none}
 .blist b{font-family:var(--f-d);font-weight:700;font-size:16px}
 .blist p{margin:2px 0 0;color:var(--muted);font-size:14.5px}
 /* dashboard mock */
-.dash{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-lg);overflow:hidden}
+.dash{background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-lg);overflow:hidden}
 .dash__bar{display:flex;align-items:center;gap:7px;padding:13px 16px;border-bottom:1px solid var(--line);background:var(--soft)}
-.dash__bar i{width:11px;height:11px;border-radius:50%;background:#DfE3EE}
+.dash__bar i{width:11px;height:11px;border-radius:50%;background:var(--deco);opacity:.5}
 .dash__bar b{margin-left:8px;font-family:var(--f-d);font-weight:700;font-size:13px;color:var(--muted)}
 .dash__body{padding:20px}
 .kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 16px}
@@ -159,7 +191,7 @@ a{color:inherit;text-decoration:none}
 .row .st.w{background:rgba(217,119,6,.12);color:var(--gold)}
 
 /* privacy */
-.priv{background:linear-gradient(180deg,#fff,var(--soft));border:1px solid var(--line);border-radius:24px;padding:44px;display:flex;gap:24px;align-items:center}
+.priv{background:linear-gradient(180deg,var(--card),var(--soft));border:1px solid var(--line);border-radius:24px;padding:44px;display:flex;gap:24px;align-items:center}
 .priv__ic{width:66px;height:66px;border-radius:20px;background:var(--brand-light);color:var(--brand);display:grid;place-items:center;flex:0 0 auto}
 .priv__ic svg{width:32px;height:32px}
 .priv h3{font-size:24px;font-weight:800}
@@ -181,6 +213,59 @@ a{color:inherit;text-decoration:none}
 .foot__col a:hover{color:var(--brand)}
 .foot__bot{margin:36px 0 0;padding:22px 0 0;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;color:var(--faint);font-size:13.5px}
 .byline a{color:var(--brand);font-weight:600}
+/* las tarjetas flotantes iban detras de la pantalla del movil */
+.float{z-index:4}
+
+/* accesibilidad / antispam */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0;pointer-events:none}
+
+/* formularios de waitlist */
+.wl{margin:30px 0 0;max-width:500px}
+.wl__row{display:flex;gap:10px;flex-wrap:wrap}
+.wl__row--stack{flex-direction:column}
+.wl__row--stack .wl__f{width:100%}
+.wl__f{flex:1 1 210px;min-width:0;display:flex}
+.wl input{width:100%;min-width:0;font-family:var(--f-b);font-size:16px;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:999px;padding:13px 20px;transition:border-color .18s,box-shadow .18s}
+.wl input::placeholder{color:var(--faint);opacity:1}
+.wl input:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 4px var(--brand-light)}
+.wl input[aria-invalid="true"]{border-color:var(--danger)}
+.wl button{flex:0 0 auto}
+.wl button[disabled]{opacity:.62;cursor:progress;transform:none}
+.wl__msg{margin:13px 0 0;font-family:var(--f-d);font-weight:700;font-size:14.5px;display:flex;align-items:flex-start;gap:8px}
+.wl__msg:empty{display:none}
+.wl__msg svg{width:17px;height:17px;flex:0 0 auto;margin-top:2px}
+.wl__msg.is-ok{color:var(--success)}
+.wl__msg.is-err{color:var(--danger)}
+.wl__fine{margin:13px 0 0;font-size:13.5px;color:var(--faint);max-width:44ch}
+
+/* variante sobre la banda degradada */
+.cta .wl{margin:26px auto 0;text-align:left}
+.cta .wl input{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.42);color:#fff}
+.cta .wl input::placeholder{color:rgba(255,255,255,.75)}
+.cta .wl input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.24)}
+.cta .wl__fine{color:rgba(255,255,255,.82)}
+.cta .wl__msg.is-ok{color:#BFF5E2}
+.cta .wl__msg.is-err{color:#FFDADA}
+.cta__alt{position:relative;margin:20px 0 0;font-size:15px;color:rgba(255,255,255,.9)}
+.cta__alt a{font-family:var(--f-d);font-weight:700;border-bottom:1.5px solid rgba(255,255,255,.5);padding-bottom:1px}
+.cta__alt a:hover{border-color:#fff}
+
+/* fila de confianza (sustituye a las metricas inventadas) */
+.trust{display:flex;gap:14px 26px;margin:30px 0 0;flex-wrap:wrap}
+.trust div{display:flex;align-items:center;gap:9px;font-family:var(--f-d);font-weight:600;font-size:14px;color:var(--muted)}
+.trust svg{width:17px;height:17px;flex:0 0 auto;color:var(--brand)}
+
+/* FAQ */
+.faq{max-width:780px;margin:0 auto;display:grid;gap:12px}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:16px}
+.faq details[open]{box-shadow:var(--shadow)}
+.faq summary{cursor:pointer;list-style:none;padding:19px 24px;font-family:var(--f-d);font-weight:700;font-size:16.5px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--brand)}
+.faq summary::after{content:"";width:10px;height:10px;flex:0 0 auto;border-right:2px solid var(--faint);border-bottom:2px solid var(--faint);transform:rotate(45deg) translate(-2px,-2px);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(-135deg) translate(-2px,-2px)}
+.faq p{margin:0;padding:0 24px 21px;color:var(--muted);font-size:15.5px}
 
 .rv{opacity:0;transform:translateY(18px)}
 .js .rv{transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.3,1)}
@@ -221,7 +306,7 @@ a{color:inherit;text-decoration:none}
         <li class="hide"><a href="#how" data-es="Cómo funciona">How it works</a></li>
         <li class="hide"><a href="#business" data-es="Para negocios">For business</a></li>
         <li class="hide2"><span class="lang" role="group" aria-label="Language"><button id="en" class="on" type="button">EN</button><button id="es" type="button">ES</button></span></li>
-        <li><a class="btn btn--brand" href="#get" data-es="Descargar la app">Get the app</a></li>
+        <li><a class="btn btn--brand" href="#get" data-es="Únete a la lista">Join the waitlist</a></li>
       </ul>
     </nav>
   </div>
@@ -234,15 +319,22 @@ a{color:inherit;text-decoration:none}
       <span class="pill"><i></i><span data-es="Social · Negocios · Pagos">Social · Business · Payments</span></span>
       <h1 data-es-html="Todo tu barrio,<br>en <span class='grad-t'>una app</span>.">Your neighborhood,<br>in <span class="grad-t">one app</span>.</h1>
       <p class="hero__p" data-es="Descubre los sitios que tienes cerca, entra a su chat en vivo, pide y paga, y vuelve por lo que te gusta. Venuo conecta a las personas con los negocios de su zona.">Discover the places around you, join their live chat, order and pay, and come back for what you love. Venuo connects people with the venues in their area.</p>
-      <div class="hero__cta">
-        <a class="btn btn--brand btn--lg" href="#get" data-es="Descargar la app">Get the app
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn btn--ghost btn--lg" href="#business" data-es="Soy un negocio">I'm a business</a>
-      </div>
-      <div class="hero__stats">
-        <div class="stat"><b class="grad-t">5</b><span data-es="pestañas, una app">tabs, one app</span></div>
-        <div class="stat"><b class="grad-t">EN·ES</b><span data-es="bilingüe">bilingual</span></div>
-        <div class="stat"><b class="grad-t">Stripe</b><span data-es="pagos seguros">secure payments</span></div>
+      <form class="wl" data-wl="consumer" novalidate>
+        <div class="wl__row">
+          <span class="wl__f">
+            <label class="sr-only" for="wl-hero" data-es="Tu email">Your email</label>
+            <input id="wl-hero" name="email" type="email" autocomplete="email" required placeholder="you@email.com" data-es-ph="tu@email.com">
+          </span>
+          <button class="btn btn--brand btn--lg" type="submit"><span data-es="Únete a la lista">Join the waitlist</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+        <input class="hp" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p class="wl__msg" role="status" aria-live="polite"></p>
+        <p class="wl__fine" data-es="Sin spam y sin campañas de goteo: un solo correo, el día que Venuo abra en tu ciudad.">No spam, no drip campaign: one email, the day Venuo opens in your city.</p>
+      </form>
+      <div class="trust">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10.5" width="16" height="10" rx="2.5"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg><span data-es="Tu ubicación nunca se comparte">Your location is never shared</span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2.5"/><path d="M2 10h20"/></svg><span data-es="Pagos con Stripe">Payments by Stripe</span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg><span data-es="Bilingüe EN · ES">Bilingual EN · ES</span></div>
       </div>
     </div>
     <div class="phone" aria-hidden="true">
@@ -334,8 +426,28 @@ a{color:inherit;text-decoration:none}
           <li><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2.5"/><path d="M2 10h20"/></svg></span><div><b data-es="Pagos con Stripe">Payments with Stripe</b><p data-es="Cobros seguros del lado del servidor con Stripe Connect. El dinero llega a tu cuenta.">Secure server-side payments with Stripe Connect. Money lands in your account.</p></div></li>
           <li><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18M7 14l3-3 3 3 5-6"/></svg></span><div><b data-es="Ofertas, fidelidad y analítica">Offers, loyalty &amp; analytics</b><p data-es="Lanza ofertas, premia a los clientes que vuelven y mide qué funciona.">Launch offers, reward returning customers, and measure what works.</p></div></li>
         </ul>
-        <div style="margin:26px 0 0"><a class="btn btn--brand btn--lg" href="#get" data-es="Trae tu local">Bring your venue
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+        <form class="wl" data-wl="business" novalidate>
+          <div class="wl__row">
+            <span class="wl__f">
+              <label class="sr-only" for="wl-biz-name" data-es="Nombre del local">Venue name</label>
+              <input id="wl-biz-name" name="business_name" type="text" autocomplete="organization" required placeholder="Café Verde" maxlength="120">
+            </span>
+            <span class="wl__f">
+              <label class="sr-only" for="wl-biz-city" data-es="Ciudad">City</label>
+              <input id="wl-biz-city" name="city" type="text" autocomplete="address-level2" required placeholder="Miami" data-es-ph="Madrid" maxlength="120">
+            </span>
+          </div>
+          <div class="wl__row" style="margin-top:10px">
+            <span class="wl__f">
+              <label class="sr-only" for="wl-biz-email" data-es="Tu email">Your email</label>
+              <input id="wl-biz-email" name="email" type="email" autocomplete="email" required placeholder="you@venue.com" data-es-ph="tu@local.com">
+            </span>
+            <button class="btn btn--brand btn--lg" type="submit"><span data-es="Ser local fundador">Become a founding venue</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+          <input class="hp" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <p class="wl__msg" role="status" aria-live="polite"></p>
+          <p class="wl__fine" data-es="Los locales fundadores entran antes y con condiciones preferentes. Te escribimos en persona, no con un formulario automático.">Founding venues get in first and on preferential terms. We write back in person, not with an autoresponder.</p>
+        </form>
       </div>
       <div class="dash rv" aria-hidden="true">
         <div class="dash__bar"><i></i><i></i><i></i><b data-es="Panel de Venuo · Café Verde">Venuo dashboard · Café Verde</b></div>
@@ -369,16 +481,58 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
+<section class="sec soft" id="faq">
+  <div class="wrap">
+    <div class="sec__head rv">
+      <p class="eyebrow" data-es="Preguntas">Questions</p>
+      <h2 data-es="Lo que nos preguntáis antes de apuntaros.">What people ask before joining.</h2>
+    </div>
+    <div class="faq">
+      <details class="rv" name="faq" open>
+        <summary data-es="¿Cuándo se puede usar Venuo?">When can I actually use Venuo?</summary>
+        <p data-es="Está en construcción ahora mismo. Abrimos ciudad por ciudad, y los de la lista entran primero. No publicamos una fecha que todavía no podemos garantizar.">It's being built right now. We open city by city, and the waitlist goes in first. We're not publishing a date we can't yet guarantee.</p>
+      </details>
+      <details class="rv" name="faq">
+        <summary data-es="¿Cuánto cuesta?">What does it cost?</summary>
+        <p data-es="Para las personas, nada. Para los negocios, el precio se anuncia en el lanzamiento; los locales fundadores entran con condiciones preferentes que respetamos después.">For people, nothing. For businesses, pricing is announced at launch — founding venues get preferential terms that we honor afterwards.</p>
+      </details>
+      <details class="rv" name="faq">
+        <summary data-es="¿En qué ciudades vais a abrir?">Which cities are you opening in?</summary>
+        <p data-es="Priorizamos según dónde se apunte más gente y más locales. Si te apuntas como negocio, la ciudad que nos indiques cuenta para esa decisión.">We prioritize by where the most people and venues sign up. If you register a venue, the city you give us counts toward that decision.</p>
+      </details>
+      <details class="rv" name="faq">
+        <summary data-es="¿Tengo que compartir mi ubicación?">Do I have to share my location?</summary>
+        <p data-es="El GPS solo sirve para mostrarte qué tienes cerca. Venuo nunca enseña tu ubicación en tiempo real a nadie: ni a otros usuarios, ni a los negocios.">GPS is only used to show you what's nearby. Venuo never shows your real-time location to anyone — not to other users, not to venues.</p>
+      </details>
+      <details class="rv" name="faq">
+        <summary data-es="Tengo un local. ¿Qué necesito para empezar?">I have a venue. What do I need to start?</summary>
+        <p data-es="Nada que instalar. Una cuenta de Stripe para recibir los cobros y tu carta. La configuración se hace en minutos desde el panel.">Nothing to install. A Stripe account to receive payments, and your menu. Setup takes minutes from the dashboard.</p>
+      </details>
+      <details class="rv" name="faq">
+        <summary data-es="¿Qué hacéis con mi correo?">What do you do with my email?</summary>
+        <p data-es="Guardarlo para avisarte una vez, cuando abramos donde vives. No lo vendemos, no lo compartimos y no te metemos en ninguna secuencia de marketing.">Store it to notify you once, when we open where you live. We don't sell it, don't share it, and don't put you in any marketing sequence.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
 <section class="sec" id="get">
   <div class="wrap">
     <div class="cta rv">
       <h2 data-es="Descubre lo que tienes al lado.">Discover what's right next door.</h2>
-      <p data-es="Descarga Venuo y empieza a vivir tu barrio. ¿Tienes un negocio? Móntalo en minutos y empieza a vender.">Download Venuo and start living your neighborhood. Got a business? Set it up in minutes and start selling.</p>
-      <div class="cta__btns">
-        <a class="btn btn--white btn--lg" href="#" data-es="Descargar la app">Get the app
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn btn--lg" style="background:rgba(255,255,255,.16);color:#fff;border-color:rgba(255,255,255,.4)" href="#" data-es="Registrar mi negocio">Register my business</a>
-      </div>
+      <p data-es="Estamos construyendo Venuo ahora mismo. Apúntate y serás de los primeros en entrar cuando abramos en tu ciudad.">We're building Venuo right now. Join the list and you'll be among the first in when we open in your city.</p>
+      <form class="wl" data-wl="consumer" novalidate>
+        <div class="wl__row">
+          <span class="wl__f">
+            <label class="sr-only" for="wl-end" data-es="Tu email">Your email</label>
+            <input id="wl-end" name="email" type="email" autocomplete="email" required placeholder="you@email.com" data-es-ph="tu@email.com">
+          </span>
+          <button class="btn btn--white btn--lg" type="submit"><span data-es="Únete a la lista">Join the waitlist</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+        <input class="hp" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p class="wl__msg" role="status" aria-live="polite"></p>
+      </form>
+      <p class="cta__alt" data-es-html="¿Tienes un local? <a href=&quot;#business&quot;>Regístralo como fundador</a>">Got a venue? <a href="#business">Register it as a founding venue</a></p>
     </div>
   </div>
 </section>
@@ -391,7 +545,7 @@ a{color:inherit;text-decoration:none}
         <a class="brand" href="#top"><span class="brand__pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.4-7-11a7 7 0 0 1 14 0c0 4.6-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg></span>Venuo</a>
         <p class="foot__p" data-es="La capa social de los negocios de tu ciudad. Descubre, chatea, pide y vuelve.">The social layer for your city's venues. Discover, chat, order, and come back.</p>
       </div>
-      <div class="foot__col"><h4 data-es="Producto">Product</h4><a href="#discover" data-es="Para personas">For people</a><a href="#business" data-es="Para negocios">For business</a><a href="#how" data-es="Cómo funciona">How it works</a></div>
+      <div class="foot__col"><h4 data-es="Producto">Product</h4><a href="#discover" data-es="Para personas">For people</a><a href="#business" data-es="Para negocios">For business</a><a href="#how" data-es="Cómo funciona">How it works</a><a href="#faq" data-es="Preguntas">Questions</a></div>
       <div class="foot__col"><h4 data-es="Empresa">Company</h4><a href="https://otunitylabs.com" data-es="Otunity Labs">Otunity Labs</a><a href="mailto:jgarcia@otunitylabs.com" data-es="Contacto">Contact</a></div>
     </div>
     <div class="foot__bot">
@@ -423,15 +577,119 @@ a{color:inherit;text-decoration:none}
         if(t2)t2.nodeValue=t2.nodeValue.match(/^\s*/)[0]+val+t2.nodeValue.match(/\s*$/)[0];else el.textContent=val;
       }
     });
+    [].forEach.call(document.querySelectorAll("[data-es-ph]"),function(el){
+      if(!el.hasAttribute("data-en-ph"))el.setAttribute("data-en-ph",el.getAttribute("placeholder")||"");
+      el.setAttribute("placeholder",es?el.getAttribute("data-es-ph"):el.getAttribute("data-en-ph"));
+    });
     document.documentElement.lang=lang;
+    /* re-renderizar DESPUES de fijar el idioma: __render lee documentElement.lang */
+    [].forEach.call(document.querySelectorAll("form[data-wl]"),function(f){if(f.__render)f.__render();});
+    try{localStorage.setItem("venuo.lang",lang);}catch(e){}
     document.title=D[lang].title;
     var en=document.getElementById("en"),esb=document.getElementById("es");
     if(en){en.classList.toggle("on",!es);esb.classList.toggle("on",es);}
   }
   var en=document.getElementById("en"),esb=document.getElementById("es");
   if(en){en.addEventListener("click",function(){set("en");});esb.addEventListener("click",function(){set("es");});}
-  (navigator.language||"").toLowerCase().indexOf("es")===0?set("es"):set("en");
+  var saved=null;try{saved=localStorage.getItem("venuo.lang");}catch(e){}
+  if(saved==="es"||saved==="en")set(saved);
+  else (navigator.language||"").toLowerCase().indexOf("es")===0?set("es"):set("en");
   var yr=document.getElementById("yr");if(yr)yr.textContent=(new Date).getFullYear();
+  /* ---------- waitlist -> Supabase ----------
+     La clave publicable va expuesta a proposito: el rol anon solo tiene
+     INSERT sobre waitlist_signups, nunca SELECT, asi que no se puede leer
+     la lista desde el navegador. Verificado contra la API. */
+  var SB="https://oemxsckzssvmedybxhgv.supabase.co/rest/v1/waitlist_signups";
+  var SBKEY="sb_publishable_G0W9beHbxiI3GoLlPh2AOw_OIMxeiT7";
+  var T={
+    en:{sending:"Sending…",ok:"You're on the list. We'll write once, when we open.",
+        okBiz:"Got it. We'll reach out in person about your venue.",
+        dup:"You're already on the list — nothing else to do.",
+        bad:"That email doesn't look right. Mind checking it?",
+        fail:"Something broke on our side. Write to jgarcia@otunitylabs.com and we'll add you by hand.",
+        req:"Fill in every field first."},
+    es:{sending:"Enviando…",ok:"Ya estás en la lista. Te escribimos una vez, cuando abramos.",
+        okBiz:"Recibido. Te escribimos en persona para hablar de tu local.",
+        dup:"Ya estabas en la lista — no hace falta nada más.",
+        bad:"Ese correo no parece válido. ¿Lo revisas?",
+        fail:"Algo falló de nuestro lado. Escribe a jgarcia@otunitylabs.com y te añadimos a mano.",
+        req:"Rellena todos los campos primero."}
+  };
+  var ICO={ok:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
+           err:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.5h.01"/></svg>'};
+  function lang(){return document.documentElement.lang==="es"?"es":"en";}
+
+  [].forEach.call(document.querySelectorAll("form[data-wl]"),function(form){
+    var kind=form.getAttribute("data-wl"),
+        btn=form.querySelector("button[type=submit]"),
+        msg=form.querySelector(".wl__msg"),
+        btnLabel=btn?btn.querySelector("span"):null,
+        btnEnHtml=btnLabel?btnLabel.innerHTML:"";
+    form.__key=null;
+    form.__render=function(){
+      if(!form.__key){msg.textContent="";msg.className="wl__msg";return;}
+      var t=T[lang()][form.__key]||"";
+      var bad=form.__key==="bad"||form.__key==="fail"||form.__key==="req";
+      msg.className="wl__msg "+(bad?"is-err":"is-ok");
+      msg.innerHTML=(bad?ICO.err:ICO.ok)+"<span>"+t+"</span>";
+    };
+    function say(key){form.__key=key;form.__render();}
+
+    form.addEventListener("submit",function(ev){
+      ev.preventDefault();
+      if(form.querySelector(".hp").value){say("ok");return;}   /* trampa antispam */
+      var body={kind:kind,locale:lang()},ok=true;
+      [].forEach.call(form.querySelectorAll("input:not(.hp)"),function(i){
+        var v=(i.value||"").trim();
+        if(i.hasAttribute("required")&&!v){ok=false;i.setAttribute("aria-invalid","true");}
+        else i.removeAttribute("aria-invalid");
+        if(v)body[i.name]=v;
+      });
+      if(!ok){say("req");return;}
+      var em=form.querySelector("input[type=email]");
+      if(em&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value.trim())){
+        em.setAttribute("aria-invalid","true");say("bad");return;
+      }
+      if(btn){btn.disabled=true;if(btnLabel)btnLabel.textContent=T[lang()].sending;}
+      fetch(SB,{method:"POST",headers:{"apikey":SBKEY,"Authorization":"Bearer "+SBKEY,
+        "Content-Type":"application/json","Prefer":"return=minimal"},body:JSON.stringify(body)})
+        .then(function(r){
+          if(r.status===201){say(kind==="business"?"okBiz":"ok");form.reset();}
+          else if(r.status===409)say("dup");
+          else if(r.status===400)say("bad");
+          else say("fail");
+        })
+        .catch(function(){say("fail");})
+        .then(function(){if(btn){btn.disabled=false;if(btnLabel)btnLabel.innerHTML=btnEnHtml;}
+          if(btnLabel&&lang()==="es"&&btnLabel.getAttribute("data-es"))btnLabel.textContent=btnLabel.getAttribute("data-es");});
+    });
+  });
+
+  /* ---------- motion opcional: si el CDN falla, el reveal base sigue vivo ---------- */
+  if(!reduce){
+    import("https://cdn.jsdelivr.net/npm/motion@13/+esm").then(function(M){
+      var animate=M.animate,inView=M.inView,scroll=M.scroll;
+      /* las tarjetas entran escalonadas dentro de cada rejilla */
+      [].forEach.call(document.querySelectorAll(".steps,.feat,.faq"),function(grid){
+        inView(grid,function(){
+          animate(grid.children,{opacity:[0,1],transform:["translateY(20px)","translateY(0px)"]},
+            {duration:.5,delay:M.stagger(.07),easing:[.2,.7,.3,1]});
+        },{amount:.15,margin:"0px 0px -8% 0px"});
+      });
+      /* los mensajes del chat aparecen en secuencia, como una conversacion */
+      var chat=document.querySelector(".scr__body");
+      if(chat)inView(chat,function(){
+        animate(chat.querySelectorAll(".msg,.cart"),{opacity:[0,1],transform:["translateY(10px) scale(.97)","translateY(0px) scale(1)"]},
+          {duration:.45,delay:M.stagger(.16,{start:.25}),easing:[.2,.7,.3,1]});
+      },{amount:.4});
+      /* el telefono flota muy poco al hacer scroll */
+      var ph=document.querySelector(".phone");
+      if(ph&&scroll&&matchMedia("(min-width:961px)").matches)
+        scroll(animate(ph,{transform:["translateY(14px)","translateY(-14px)"]},{easing:"linear"}),
+          {target:ph,offset:["start end","end start"]});
+    }).catch(function(){/* sin CDN el .rv de abajo ya deja todo visible */});
+  }
+
   var rv=document.querySelectorAll(".rv");
   if(reduce||!("IntersectionObserver"in window)){[].forEach.call(rv,function(e){e.classList.add("in");});}
   else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{rootMargin:"0px 0px -8% 0px",threshold:.08});[].forEach.call(rv,function(e){io.observe(e);});}
