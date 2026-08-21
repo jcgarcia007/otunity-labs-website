@@ -93,6 +93,8 @@ a{color:inherit;text-decoration:none}
 .nav__links{display:flex;align-items:center;gap:6px;list-style:none;margin:0;padding:0}
 .nav__links a{font-family:var(--f-d);font-weight:600;font-size:14.5px;color:var(--muted);padding:10px 14px;border-radius:10px}
 .nav__links a:hover{color:var(--ink);background:var(--soft)}
+.signin{font-family:var(--f-d);font-weight:600;font-size:14.5px;color:var(--muted);padding:10px 12px;border-radius:10px;white-space:nowrap}
+.signin:hover{color:var(--ink);background:var(--soft)}
 .nav__links a.btn--brand{color:var(--on-brand)}
 .nav__links a.btn--brand:hover{color:var(--on-brand);background:var(--brand-dark)}
 .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;margin:0 4px;background:var(--card)}
@@ -235,40 +237,10 @@ a{color:inherit;text-decoration:none}
 /* las tarjetas flotantes iban detras de la pantalla del movil */
 .float{z-index:4}
 
-/* accesibilidad / antispam */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0;pointer-events:none}
-
-/* formularios de waitlist */
-.wl{margin:30px 0 0;max-width:500px}
-.wl__row{display:flex;gap:10px;flex-wrap:wrap}
-.wl__row--stack{flex-direction:column}
-.wl__row--stack .wl__f{width:100%}
-.wl__f{flex:1 1 210px;min-width:0;display:flex}
-.wl input{width:100%;min-width:0;font-family:var(--f-b);font-size:16px;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:999px;padding:13px 20px;transition:border-color .18s,box-shadow .18s}
-.wl input::placeholder{color:var(--faint);opacity:1}
-.wl input:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 4px var(--brand-light)}
-.wl input[aria-invalid="true"]{border-color:var(--danger)}
-.wl button{flex:0 0 auto}
-.wl button[disabled]{opacity:.62;cursor:progress;transform:none}
-.wl__msg{margin:13px 0 0;font-family:var(--f-d);font-weight:700;font-size:14.5px;display:flex;align-items:flex-start;gap:8px}
-.wl__msg:empty{display:none}
-.wl__msg svg{width:17px;height:17px;flex:0 0 auto;margin-top:2px}
-.wl__msg.is-ok{color:var(--success)}
-.wl__msg.is-err{color:var(--danger)}
-.wl__fine{margin:13px 0 0;font-size:13.5px;color:var(--faint);max-width:44ch}
-
-/* variante sobre la banda degradada */
-.cta .wl{margin:26px auto 0;text-align:left}
-.cta .wl input{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.42);color:#fff}
-.cta .wl input::placeholder{color:rgba(255,255,255,.75)}
-.cta .wl input:focus{border-color:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.24)}
-.cta .wl__fine{color:rgba(255,255,255,.82)}
-.cta .wl__msg.is-ok{color:#BFF5E2}
-.cta .wl__msg.is-err{color:#FFDADA}
-.cta__alt{position:relative;margin:20px 0 0;font-size:15px;color:rgba(255,255,255,.9)}
-.cta__alt a{font-family:var(--f-d);font-weight:700;border-bottom:1.5px solid rgba(255,255,255,.5);padding-bottom:1px}
-.cta__alt a:hover{border-color:#fff}
+.hero__note{margin:16px 0 0;font-size:14.5px;color:var(--faint)}
+.hero__note a{color:var(--brand);font-family:var(--f-d);font-weight:600;border-bottom:1px solid transparent}
+.hero__note a:hover{border-color:var(--brand)}
 
 /* fila de confianza (sustituye a las metricas inventadas) */
 .trust{display:flex;gap:14px 26px;margin:30px 0 0;flex-wrap:wrap}
@@ -299,6 +271,7 @@ a{color:inherit;text-decoration:none}
   .steps,.feat{grid-template-columns:1fr 1fr}
   .float--tl{left:auto;right:-20px;top:40px}
   .nav__links li.hide{display:none}
+  .nav__links li.hide3{display:none}
   .split .dash{order:-1}
 }
 @media(max-width:640px){
@@ -310,7 +283,7 @@ a{color:inherit;text-decoration:none}
   .hero__stats{gap:22px}
   .float{display:none}
   .foot__grid{gap:22px}
-  .nav__links li.hide2{display:none}
+  .nav__links li.hide2,.nav__links li.hide4{display:none}
 }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.rv{opacity:1;transform:none}}
 </style>
@@ -329,7 +302,8 @@ a{color:inherit;text-decoration:none}
           <svg class="theme__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13.4A8.2 8.2 0 1 1 10.6 4a6.6 6.6 0 0 0 9.4 9.4z"/></svg>
         </button></li>
         <li class="hide2"><span class="lang" role="group" aria-label="Language"><button id="en" class="on" type="button">EN</button><button id="es" type="button">ES</button></span></li>
-        <li><a class="btn btn--brand" href="#get" data-es="Únete a la lista">Join the waitlist</a></li>
+        <li class="hide3"><a class="signin" href="https://jchat.cloud/auth/login" data-es="Iniciar sesión">Sign in</a></li>
+        <li><a class="btn btn--brand" href="https://jchat.cloud/auth/register" data-es="Crear cuenta">Sign up</a></li>
       </ul>
     </nav>
   </div>
@@ -342,18 +316,11 @@ a{color:inherit;text-decoration:none}
       <span class="pill"><i></i><span data-es="Social · Negocios · Pagos">Social · Business · Payments</span></span>
       <h1 data-es-html="Todo tu barrio,<br>en <span class='grad-t'>una app</span>.">Your neighborhood,<br>in <span class="grad-t">one app</span>.</h1>
       <p class="hero__p" data-es="Descubre los sitios que tienes cerca, entra a su chat en vivo, pide y paga, y vuelve por lo que te gusta. Venuo conecta a las personas con los negocios de su zona.">Discover the places around you, join their live chat, order and pay, and come back for what you love. Venuo connects people with the venues in their area.</p>
-      <form class="wl" data-wl="consumer" novalidate>
-        <div class="wl__row">
-          <span class="wl__f">
-            <label class="sr-only" for="wl-hero" data-es="Tu email">Your email</label>
-            <input id="wl-hero" name="email" type="email" autocomplete="email" required placeholder="you@email.com" data-es-ph="tu@email.com">
-          </span>
-          <button class="btn btn--brand btn--lg" type="submit"><span data-es="Únete a la lista">Join the waitlist</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-        </div>
-        <input class="hp" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <p class="wl__msg" role="status" aria-live="polite"></p>
-        <p class="wl__fine" data-es="Sin spam y sin campañas de goteo: un solo correo, el día que Venuo abra en tu ciudad.">No spam, no drip campaign: one email, the day Venuo opens in your city.</p>
-      </form>
+      <div class="hero__cta">
+        <a class="btn btn--brand btn--lg" href="https://jchat.cloud/auth/register" data-es="Registra tu local">Register your venue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn--ghost btn--lg" href="#how" data-es="Ver cómo funciona">See how it works</a>
+      </div>
+      <p class="hero__note" data-es-html="¿Ya tienes cuenta? <a href=&quot;https://jchat.cloud/auth/login&quot;>Entra al panel</a>">Already have an account? <a href="https://jchat.cloud/auth/login">Go to your dashboard</a></p>
       <div class="trust">
         <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10.5" width="16" height="10" rx="2.5"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/></svg><span data-es="Tu ubicación nunca se comparte">Your location is never shared</span></div>
         <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2.5"/><path d="M2 10h20"/></svg><span data-es="Pagos con Stripe">Payments by Stripe</span></div>
@@ -449,28 +416,11 @@ a{color:inherit;text-decoration:none}
           <li><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2.5"/><path d="M2 10h20"/></svg></span><div><b data-es="Pagos con Stripe">Payments with Stripe</b><p data-es="Cobros seguros del lado del servidor con Stripe Connect. El dinero llega a tu cuenta.">Secure server-side payments with Stripe Connect. Money lands in your account.</p></div></li>
           <li><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18M7 14l3-3 3 3 5-6"/></svg></span><div><b data-es="Ofertas, fidelidad y analítica">Offers, loyalty &amp; analytics</b><p data-es="Lanza ofertas, premia a los clientes que vuelven y mide qué funciona.">Launch offers, reward returning customers, and measure what works.</p></div></li>
         </ul>
-        <form class="wl" data-wl="business" novalidate>
-          <div class="wl__row">
-            <span class="wl__f">
-              <label class="sr-only" for="wl-biz-name" data-es="Nombre del local">Venue name</label>
-              <input id="wl-biz-name" name="business_name" type="text" autocomplete="organization" required placeholder="Café Verde" maxlength="120">
-            </span>
-            <span class="wl__f">
-              <label class="sr-only" for="wl-biz-city" data-es="Ciudad">City</label>
-              <input id="wl-biz-city" name="city" type="text" autocomplete="address-level2" required placeholder="Miami" data-es-ph="Madrid" maxlength="120">
-            </span>
-          </div>
-          <div class="wl__row" style="margin-top:10px">
-            <span class="wl__f">
-              <label class="sr-only" for="wl-biz-email" data-es="Tu email">Your email</label>
-              <input id="wl-biz-email" name="email" type="email" autocomplete="email" required placeholder="you@venue.com" data-es-ph="tu@local.com">
-            </span>
-            <button class="btn btn--brand btn--lg" type="submit"><span data-es="Ser local fundador">Become a founding venue</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-          </div>
-          <input class="hp" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <p class="wl__msg" role="status" aria-live="polite"></p>
-          <p class="wl__fine" data-es="Los locales fundadores entran antes y con condiciones preferentes. Te escribimos en persona, no con un formulario automático.">Founding venues get in first and on preferential terms. We write back in person, not with an autoresponder.</p>
-        </form>
+        <div class="hero__cta" style="margin:26px 0 0">
+          <a class="btn btn--brand btn--lg" href="https://jchat.cloud/auth/register" data-es="Crear cuenta">Create your account <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn--ghost btn--lg" href="https://jchat.cloud/auth/login" data-es="Iniciar sesión">Sign in</a>
+        </div>
+        <p class="hero__note" data-es="Se configura en minutos: publica tu carta, conecta Stripe y empieza a recibir pedidos.">Set up in minutes: publish your menu, connect Stripe, and start taking orders.</p>
       </div>
       <div class="dash rv" aria-hidden="true">
         <div class="dash__bar"><i></i><i></i><i></i><b data-es="Panel de Venuo · Café Verde">Venuo dashboard · Café Verde</b></div>
@@ -508,20 +458,20 @@ a{color:inherit;text-decoration:none}
   <div class="wrap">
     <div class="sec__head rv">
       <p class="eyebrow" data-es="Preguntas">Questions</p>
-      <h2 data-es="Lo que nos preguntáis antes de apuntaros.">What people ask before joining.</h2>
+      <h2 data-es="Lo que nos preguntan los locales.">What venues ask us.</h2>
     </div>
     <div class="faq">
       <details class="rv" name="faq" open>
-        <summary data-es="¿Cuándo se puede usar Venuo?">When can I actually use Venuo?</summary>
-        <p data-es="Está en construcción ahora mismo. Abrimos ciudad por ciudad, y los de la lista entran primero. No publicamos una fecha que todavía no podemos garantizar.">It's being built right now. We open city by city, and the waitlist goes in first. We're not publishing a date we can't yet guarantee.</p>
+        <summary data-es="¿Puedo empezar hoy?">Can I start today?</summary>
+        <p data-es="Si tienes un local, sí: creas la cuenta, publicas tu carta y empiezas a recibir pedidos. La app para clientes llega después; mientras tanto tu sala y tus pagos ya funcionan.">If you run a venue, yes: create your account, publish your menu, and start taking orders. The customer app comes later — meanwhile your room and your payments already work.</p>
       </details>
       <details class="rv" name="faq">
         <summary data-es="¿Cuánto cuesta?">What does it cost?</summary>
-        <p data-es="Para las personas, nada. Para los negocios, el precio se anuncia en el lanzamiento; los locales fundadores entran con condiciones preferentes que respetamos después.">For people, nothing. For businesses, pricing is announced at launch — founding venues get preferential terms that we honor afterwards.</p>
+        <p data-es="Para las personas, nada. Para los negocios hay una suscripción y una comisión por pedido; lo ves al crear la cuenta, antes de conectar nada.">For people, nothing. For businesses there's a subscription and a per-order fee — you see both when you create the account, before connecting anything.</p>
       </details>
       <details class="rv" name="faq">
-        <summary data-es="¿En qué ciudades vais a abrir?">Which cities are you opening in?</summary>
-        <p data-es="Priorizamos según dónde se apunte más gente y más locales. Si te apuntas como negocio, la ciudad que nos indiques cuenta para esa decisión.">We prioritize by where the most people and venues sign up. If you register a venue, the city you give us counts toward that decision.</p>
+        <summary data-es="¿Funciona en mi ciudad?">Does it work in my city?</summary>
+        <p data-es="El panel, la carta y los cobros funcionan desde cualquier sitio. Lo que va ciudad por ciudad es la masa de clientes, y crece donde hay locales activos.">The dashboard, the menu and the payments work from anywhere. What grows city by city is the customer base — and it grows where there are active venues.</p>
       </details>
       <details class="rv" name="faq">
         <summary data-es="¿Tengo que compartir mi ubicación?">Do I have to share my location?</summary>
@@ -531,10 +481,6 @@ a{color:inherit;text-decoration:none}
         <summary data-es="Tengo un local. ¿Qué necesito para empezar?">I have a venue. What do I need to start?</summary>
         <p data-es="Nada que instalar. Una cuenta de Stripe para recibir los cobros y tu carta. La configuración se hace en minutos desde el panel.">Nothing to install. A Stripe account to receive payments, and your menu. Setup takes minutes from the dashboard.</p>
       </details>
-      <details class="rv" name="faq">
-        <summary data-es="¿Qué hacéis con mi correo?">What do you do with my email?</summary>
-        <p data-es="Guardarlo para avisarte una vez, cuando abramos donde vives. No lo vendemos, no lo compartimos y no te metemos en ninguna secuencia de marketing.">Store it to notify you once, when we open where you live. We don't sell it, don't share it, and don't put you in any marketing sequence.</p>
-      </details>
     </div>
   </div>
 </section>
@@ -542,20 +488,13 @@ a{color:inherit;text-decoration:none}
 <section class="sec" id="get">
   <div class="wrap">
     <div class="cta rv">
-      <h2 data-es="Descubre lo que tienes al lado.">Discover what's right next door.</h2>
-      <p data-es="Estamos construyendo Venuo ahora mismo. Apúntate y serás de los primeros en entrar cuando abramos en tu ciudad.">We're building Venuo right now. Join the list and you'll be among the first in when we open in your city.</p>
-      <form class="wl" data-wl="consumer" novalidate>
-        <div class="wl__row">
-          <span class="wl__f">
-            <label class="sr-only" for="wl-end" data-es="Tu email">Your email</label>
-            <input id="wl-end" name="email" type="email" autocomplete="email" required placeholder="you@email.com" data-es-ph="tu@email.com">
-          </span>
-          <button class="btn btn--white btn--lg" type="submit"><span data-es="Únete a la lista">Join the waitlist</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-        </div>
-        <input class="hp" type="text" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <p class="wl__msg" role="status" aria-live="polite"></p>
-      </form>
-      <p class="cta__alt" data-es-html="¿Tienes un local? <a href=&quot;#business&quot;>Regístralo como fundador</a>">Got a venue? <a href="#business">Register it as a founding venue</a></p>
+      <h2 data-es="Tu local, vendiendo hoy.">Your venue, selling today.</h2>
+      <p data-es="Publica tu carta, abre tu sala y empieza a recibir pedidos hoy. La configuración se hace en minutos.">Publish your menu, open your room, and start taking orders today. Setup takes minutes.</p>
+      <div class="cta__btns">
+        <a class="btn btn--white btn--lg" href="https://jchat.cloud/auth/register" data-es="Crear cuenta">Create your account <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn--lg" style="background:rgba(255,255,255,.16);color:#fff;border-color:rgba(255,255,255,.4)" href="https://jchat.cloud/auth/login" data-es="Iniciar sesión">Sign in</a>
+      </div>
+      <p class="cta__alt" data-es-html="¿Quieres saber cómo funciona antes? <a href=&quot;#business&quot;>Mira lo que incluye</a>">Want to see how it works first? <a href="#business">See what's included</a></p>
     </div>
   </div>
 </section>
@@ -569,6 +508,7 @@ a{color:inherit;text-decoration:none}
         <p class="foot__p" data-es="La capa social de los negocios de tu ciudad. Descubre, chatea, pide y vuelve.">The social layer for your city's venues. Discover, chat, order, and come back.</p>
       </div>
       <div class="foot__col"><h4 data-es="Producto">Product</h4><a href="#discover" data-es="Para personas">For people</a><a href="#business" data-es="Para negocios">For business</a><a href="#how" data-es="Cómo funciona">How it works</a><a href="#faq" data-es="Preguntas">Questions</a></div>
+      <div class="foot__col"><h4 data-es="Acceso">Account</h4><a href="https://jchat.cloud/auth/login" data-es="Iniciar sesión">Sign in</a><a href="https://jchat.cloud/auth/register" data-es="Crear cuenta">Sign up</a></div>
       <div class="foot__col"><h4 data-es="Empresa">Company</h4><a href="https://otunitylabs.com" data-es="Otunity Labs">Otunity Labs</a><a href="mailto:jgarcia@otunitylabs.com" data-es="Contacto">Contact</a></div>
     </div>
     <div class="foot__bot">
@@ -606,7 +546,6 @@ a{color:inherit;text-decoration:none}
     });
     document.documentElement.lang=lang;
     /* re-renderizar DESPUES de fijar el idioma: __render lee documentElement.lang */
-    [].forEach.call(document.querySelectorAll("form[data-wl]"),function(f){if(f.__render)f.__render();});
     if(window.__pintarTema)window.__pintarTema();
     try{localStorage.setItem("venuo.lang",lang);}catch(e){}
     document.title=D[lang].title;
@@ -655,76 +594,6 @@ a{color:inherit;text-decoration:none}
   var onSys=function(){if(!document.documentElement.hasAttribute("data-theme"))pintarTema();};
   mqDark.addEventListener?mqDark.addEventListener("change",onSys):mqDark.addListener(onSys);
   pintarTema();
-
-  /* ---------- waitlist -> Supabase ----------
-     La clave publicable va expuesta a proposito: el rol anon solo tiene
-     INSERT sobre waitlist_signups, nunca SELECT, asi que no se puede leer
-     la lista desde el navegador. Verificado contra la API. */
-  var SB="https://oemxsckzssvmedybxhgv.supabase.co/rest/v1/waitlist_signups";
-  var SBKEY="sb_publishable_G0W9beHbxiI3GoLlPh2AOw_OIMxeiT7";
-  var T={
-    en:{sending:"Sending…",ok:"You're on the list. We'll write once, when we open.",
-        okBiz:"Got it. We'll reach out in person about your venue.",
-        dup:"You're already on the list — nothing else to do.",
-        bad:"That email doesn't look right. Mind checking it?",
-        fail:"Something broke on our side. Write to jgarcia@otunitylabs.com and we'll add you by hand.",
-        req:"Fill in every field first."},
-    es:{sending:"Enviando…",ok:"Ya estás en la lista. Te escribimos una vez, cuando abramos.",
-        okBiz:"Recibido. Te escribimos en persona para hablar de tu local.",
-        dup:"Ya estabas en la lista — no hace falta nada más.",
-        bad:"Ese correo no parece válido. ¿Lo revisas?",
-        fail:"Algo falló de nuestro lado. Escribe a jgarcia@otunitylabs.com y te añadimos a mano.",
-        req:"Rellena todos los campos primero."}
-  };
-  var ICO={ok:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>',
-           err:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.5h.01"/></svg>'};
-  function lang(){return document.documentElement.lang==="es"?"es":"en";}
-
-  [].forEach.call(document.querySelectorAll("form[data-wl]"),function(form){
-    var kind=form.getAttribute("data-wl"),
-        btn=form.querySelector("button[type=submit]"),
-        msg=form.querySelector(".wl__msg"),
-        btnLabel=btn?btn.querySelector("span"):null,
-        btnEnHtml=btnLabel?btnLabel.innerHTML:"";
-    form.__key=null;
-    form.__render=function(){
-      if(!form.__key){msg.textContent="";msg.className="wl__msg";return;}
-      var t=T[lang()][form.__key]||"";
-      var bad=form.__key==="bad"||form.__key==="fail"||form.__key==="req";
-      msg.className="wl__msg "+(bad?"is-err":"is-ok");
-      msg.innerHTML=(bad?ICO.err:ICO.ok)+"<span>"+t+"</span>";
-    };
-    function say(key){form.__key=key;form.__render();}
-
-    form.addEventListener("submit",function(ev){
-      ev.preventDefault();
-      if(form.querySelector(".hp").value){say("ok");return;}   /* trampa antispam */
-      var body={kind:kind,locale:lang()},ok=true;
-      [].forEach.call(form.querySelectorAll("input:not(.hp)"),function(i){
-        var v=(i.value||"").trim();
-        if(i.hasAttribute("required")&&!v){ok=false;i.setAttribute("aria-invalid","true");}
-        else i.removeAttribute("aria-invalid");
-        if(v)body[i.name]=v;
-      });
-      if(!ok){say("req");return;}
-      var em=form.querySelector("input[type=email]");
-      if(em&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value.trim())){
-        em.setAttribute("aria-invalid","true");say("bad");return;
-      }
-      if(btn){btn.disabled=true;if(btnLabel)btnLabel.textContent=T[lang()].sending;}
-      fetch(SB,{method:"POST",headers:{"apikey":SBKEY,"Authorization":"Bearer "+SBKEY,
-        "Content-Type":"application/json","Prefer":"return=minimal"},body:JSON.stringify(body)})
-        .then(function(r){
-          if(r.status===201){say(kind==="business"?"okBiz":"ok");form.reset();}
-          else if(r.status===409)say("dup");
-          else if(r.status===400)say("bad");
-          else say("fail");
-        })
-        .catch(function(){say("fail");})
-        .then(function(){if(btn){btn.disabled=false;if(btnLabel)btnLabel.innerHTML=btnEnHtml;}
-          if(btnLabel&&lang()==="es"&&btnLabel.getAttribute("data-es"))btnLabel.textContent=btnLabel.getAttribute("data-es");});
-    });
-  });
 
   /* ---------- motion opcional: si el CDN falla, el reveal base sigue vivo ---------- */
   if(!reduce){
