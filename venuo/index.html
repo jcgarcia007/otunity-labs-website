@@ -25,7 +25,7 @@
 <meta name="theme-color" content="#0D1017" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<script>document.documentElement.className="js"</script>
+<script>document.documentElement.className="js";try{var _t=localStorage.getItem("venuo.theme");if(_t==="dark"||_t==="light")document.documentElement.setAttribute("data-theme",_t);}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -40,8 +40,12 @@
   --shadow:0 10px 30px -12px rgba(21,32,80,.20);--shadow-lg:0 30px 60px -20px rgba(21,32,80,.28);
   --f-d:"Plus Jakarta Sans",system-ui,sans-serif;--f-b:"Inter",system-ui,sans-serif;--max:1160px;--gut:24px;
 }
+/* Tema oscuro. Se aplica por dos vias y los valores van duplicados a proposito:
+   CSS plano no permite compartir un bloque entre un @media y un selector suelto.
+   1) sistema en oscuro, salvo que el visitante haya elegido claro a mano
+   2) eleccion explicita de oscuro, que gana sobre el sistema */
 @media(prefers-color-scheme:dark){
-  :root{
+  :root:not([data-theme="light"]){
     --brand:#8AA0FF;--brand-dark:#A5B4FF;--brand-light:rgba(138,160,255,.16);--purple:#A78BFA;
     --success:#3FCF9B;--gold:#F0A93B;
     --ink:#E9EDF6;--muted:#9FADC4;--faint:#B3C0D4;--deco:#5B6879;
@@ -50,6 +54,15 @@
     --nav-bg:rgba(13,16,23,.82);
     --shadow:0 10px 30px -12px rgba(0,0,0,.6);--shadow-lg:0 30px 60px -20px rgba(0,0,0,.72);
   }
+}
+:root[data-theme="dark"]{
+    --brand:#8AA0FF;--brand-dark:#A5B4FF;--brand-light:rgba(138,160,255,.16);--purple:#A78BFA;
+    --success:#3FCF9B;--gold:#F0A93B;
+    --ink:#E9EDF6;--muted:#9FADC4;--faint:#B3C0D4;--deco:#5B6879;
+    --line:#242C3A;--bg:#0D1017;--card:#151A24;--soft:#11151E;--soft2:#1A2233;
+    --on-brand:#0B1020;--brand-ink:#4A6AE8;
+    --nav-bg:rgba(13,16,23,.82);
+    --shadow:0 10px 30px -12px rgba(0,0,0,.6);--shadow-lg:0 30px 60px -20px rgba(0,0,0,.72);
 }
 *,::after,::before{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -85,6 +98,12 @@ a{color:inherit;text-decoration:none}
 .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;margin:0 4px;background:var(--card)}
 .lang button{border:0;background:0;font-family:var(--f-d);font-weight:700;font-size:12.5px;color:var(--faint);padding:6px 11px;border-radius:999px;cursor:pointer;min-height:40px}
 .lang button.on{background:var(--brand-light);color:var(--brand)}
+.theme{display:inline-grid;place-items:center;width:44px;height:44px;margin:0 2px;padding:0;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--muted);cursor:pointer;transition:color .18s,border-color .18s,background .18s}
+.theme:hover{color:var(--brand);border-color:var(--brand)}
+.theme svg{width:18px;height:18px}
+.theme .theme__sun{display:none}
+.theme.is-dark .theme__sun{display:block}
+.theme.is-dark .theme__moon{display:none}
 
 /* hero */
 .hero{position:relative;padding:76px 0 40px;overflow:hidden}
@@ -305,6 +324,10 @@ a{color:inherit;text-decoration:none}
         <li class="hide"><a href="#discover" data-es="Descubre">Discover</a></li>
         <li class="hide"><a href="#how" data-es="Cómo funciona">How it works</a></li>
         <li class="hide"><a href="#business" data-es="Para negocios">For business</a></li>
+        <li><button class="theme" id="theme" type="button" aria-label="Switch to dark theme">
+          <svg class="theme__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg>
+          <svg class="theme__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13.4A8.2 8.2 0 1 1 10.6 4a6.6 6.6 0 0 0 9.4 9.4z"/></svg>
+        </button></li>
         <li class="hide2"><span class="lang" role="group" aria-label="Language"><button id="en" class="on" type="button">EN</button><button id="es" type="button">ES</button></span></li>
         <li><a class="btn btn--brand" href="#get" data-es="Únete a la lista">Join the waitlist</a></li>
       </ul>
@@ -584,6 +607,7 @@ a{color:inherit;text-decoration:none}
     document.documentElement.lang=lang;
     /* re-renderizar DESPUES de fijar el idioma: __render lee documentElement.lang */
     [].forEach.call(document.querySelectorAll("form[data-wl]"),function(f){if(f.__render)f.__render();});
+    if(window.__pintarTema)window.__pintarTema();
     try{localStorage.setItem("venuo.lang",lang);}catch(e){}
     document.title=D[lang].title;
     var en=document.getElementById("en"),esb=document.getElementById("es");
@@ -595,6 +619,43 @@ a{color:inherit;text-decoration:none}
   if(saved==="es"||saved==="en")set(saved);
   else (navigator.language||"").toLowerCase().indexOf("es")===0?set("es"):set("en");
   var yr=document.getElementById("yr");if(yr)yr.textContent=(new Date).getFullYear();
+  /* ---------- tema claro / oscuro ----------
+     Sin eleccion guardada no se toca data-theme: manda el sistema.
+     Al pulsar se fija el opuesto al tema efectivo y se recuerda. */
+  var THEME_T={en:{dark:"Switch to dark theme",light:"Switch to light theme"},
+               es:{dark:"Cambiar a tema oscuro",light:"Cambiar a tema claro"}};
+  var mqDark=matchMedia("(prefers-color-scheme: dark)");
+  var themeBtn=document.getElementById("theme");
+  function efectivo(){
+    var set=document.documentElement.getAttribute("data-theme");
+    if(set==="dark"||set==="light")return set;
+    return mqDark.matches?"dark":"light";
+  }
+  function pintarTema(){
+    if(!themeBtn)return;
+    var e=efectivo(),l=document.documentElement.lang==="es"?"es":"en";
+    themeBtn.classList.toggle("is-dark",e==="dark");
+    /* la etiqueta anuncia el destino, igual que el icono */
+    themeBtn.setAttribute("aria-label",THEME_T[l][e==="dark"?"light":"dark"]);
+    /* las meta theme-color llevan media=...: al elegir a mano dejan de valer,
+       asi que se fijan al color real del tema activo */
+    var col=e==="dark"?"#0D1017":"#FFFFFF";
+    [].forEach.call(document.querySelectorAll('meta[name="theme-color"]'),function(m){
+      if(document.documentElement.hasAttribute("data-theme")){m.removeAttribute("media");m.content=col;}
+    });
+  }
+  window.__pintarTema=pintarTema;
+  if(themeBtn)themeBtn.addEventListener("click",function(){
+    var siguiente=efectivo()==="dark"?"light":"dark";
+    document.documentElement.setAttribute("data-theme",siguiente);
+    try{localStorage.setItem("venuo.theme",siguiente);}catch(e){}
+    pintarTema();
+  });
+  /* si nunca se eligio a mano, seguir los cambios del sistema */
+  var onSys=function(){if(!document.documentElement.hasAttribute("data-theme"))pintarTema();};
+  mqDark.addEventListener?mqDark.addEventListener("change",onSys):mqDark.addListener(onSys);
+  pintarTema();
+
   /* ---------- waitlist -> Supabase ----------
      La clave publicable va expuesta a proposito: el rol anon solo tiene
      INSERT sobre waitlist_signups, nunca SELECT, asi que no se puede leer
